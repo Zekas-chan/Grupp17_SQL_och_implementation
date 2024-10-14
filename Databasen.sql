@@ -16,8 +16,6 @@ CREATE TABLE `Uthyrningsstation` (
 CREATE TABLE `Bilmodell` (
   `modellNamn` varchar(50) NOT NULL,
   `drivMedel` varchar(50),
-  `marke` varchar(50), -- oanvänd?
-  `arsModell` int, -- oanvänd?
   `vaxelLada` varchar(50),
   `maxAntalSaten` int,
   `dragKrok` bool,
@@ -112,7 +110,7 @@ CREATE TABLE `Erbjudande` (
   `kampanjID` int NOT NULL AUTO_INCREMENT,
   `rabattKod` varchar(20) NOT NULL UNIQUE,
   `rabattTyp` varchar(50) NOT NULL,
-  `bilTyp` varchar(50) NOT NULL,
+  `bilModell` varchar(50) NOT NULL,
   `erbjudandeStart` date NOT NULL,
   `erbjudandeSlut` date NOT NULL,
   PRIMARY KEY (`kampanjID`)
