@@ -10,7 +10,6 @@ VALUES
 ('Kombi', 'El',  'Automat', 7, TRUE, FALSE, FALSE, FALSE, 2, 4), -- Även backsystem (annat ord för parkeringsfunktion?). Växellåda ej angiven
 ('Minibuss', 'Biogas',  'Automat', 9, FALSE, FALSE, TRUE, FALSE, 4, 4), -- Eldrivna dörrar, stort lastutrymme. Växellåda ej angiven
 ('Transportbil', 'Biogas', 'Manuell', 2, FALSE, FALSE, FALSE, TRUE, 8, 2); -- Växellåda ej angiven
-SELECT * FROM `Bilmodell`;
 
 -- Skapar ett testerbjudande
 INSERT INTO erbjudande (rabattKod, rabattTyp, bilModell, erbjudandeStart, erbjudandeSlut)
@@ -25,7 +24,6 @@ VALUES
 ('Östvägen 11', 0712345678, 'ostrauthyrnings@gmail.com', '09-21 vardagar 10-22 helger'),
 ('Sydvägen 12', 0712345678, 'syduthyrning@gmail.com', '07-20 alla dagar'),
 ('Västvägen 13', 0712345678, 'vastuthyrning@gmail.com', '08-21 vardagar 08-22 helger');
-SELECT * FROM Uthyrningsstation;
 
 -- Skapar testprivatkunder
 INSERT INTO `privatkund` (`personNummer`, `epost`, `förNamn`, `telefonNummer`) 
@@ -40,7 +38,6 @@ VALUES
 (199806053456, 'oskar.jonsson@example.com', 'Oskar', 701234574),
 (198305122345, 'jenny.karlsson@example.com', 'Jenny', 701234575),
 (197911223456, 'mats.berg@example.com', 'Mats', 701234576);
-SELECT * FROM privatkund;
 
 -- Skapar testföretagskunder
 INSERT INTO `företagskund` (`organisationsNummer`, `foretagsNamn`, `kontaktFornamn`, `kontaktEfternamn`) 
@@ -50,7 +47,6 @@ VALUES
 (5560345678, 'Tech Solutions AB', 'Lisa', 'Svensson'),
 (5560456789, 'Global Ventures AB', 'Karl', 'Andersson'),
 (5560567890, 'Future Tech AB', 'Maria', 'Johansson');
-SELECT * FROM företagskund;
 
 -- Skapar testbilar. AI-genererad
 INSERT INTO `hyrbil` (`regNummer`, `tillganglig`, `farg`, `prisPerMil`, `modellNamn`, `stationsNummer`) 
@@ -86,8 +82,6 @@ VALUES
 ('HIJ678', 1, 'White', 200, 'kombi', 4),
 ('QRS567', 1, 'Silver', 250, 'minibuss', 4),
 ('ZAB456', 1, 'Grey', 300, 'transportbil', 4);
-SELECT * FROM hyrbil;
-
 
 -- Skapar testpersonal för Uthyrningsstationer 1 2, 3 och 4
 INSERT INTO `Personal` (`titel (tillstånd)`, `namn`, `stationsNummer`)
@@ -100,7 +94,6 @@ VALUES
 ('Underhåll', 'Lars Karlsson', 1),
 ('Stationschef', 'Karin Johansson', 1),
 ('Styrelsemedlem', 'Erik Persson', 1),
-
 
 -- Uthyrningsstation 2 (Östvägen 11)
 ('Uthyrningspersonal', 'Emma Jonsson', 2),
@@ -173,7 +166,7 @@ VALUES
     ('2024-10-10', 13500, 1, 5),
     ('2024-10-14', 14000, 1, 5);
 
--- Kanske är ofärdigt
+-- Kanske behövs mer kolumner, kanske duger i nuvarande utformning?
 INSERT INTO företagsfaktura (foretagsKundNummer)
 VALUES
     (1),
