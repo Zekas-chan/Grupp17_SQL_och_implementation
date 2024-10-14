@@ -1,4 +1,5 @@
--- Bygger databasen, behöver bara köras en gång
+-- Bygger databasen
+-- testcommit
 
 CREATE DATABASE `Green Rental`;
 USE `Green Rental`;
@@ -15,8 +16,8 @@ CREATE TABLE `Uthyrningsstation` (
 CREATE TABLE `Bilmodell` (
   `modellNamn` varchar(50) NOT NULL,
   `drivMedel` varchar(50),
-  `marke` varchar(50), -- oanvänd kolumn?
-  `arsModell` int, -- oanvänd kolumn?
+  `marke` varchar(50), -- oanvänd?
+  `arsModell` int, -- oanvänd?
   `vaxelLada` varchar(50),
   `maxAntalSaten` int,
   `dragKrok` bool,

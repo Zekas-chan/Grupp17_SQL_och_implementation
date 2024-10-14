@@ -1,6 +1,5 @@
--- Test commit please ignore
--- Testdata
 USE `Green Rental`;
+-- Testdata:
 
 -- Skapar bilmodellerna som finns i företaget. Då dessa alltid ska finnas kanske det hör hemma mer i filen som skapar databasen?
 INSERT INTO `Bilmodell`(modellNamn, drivMedel, marke, arsModell, vaxelLada, maxAntalSaten, dragKrok, parkeringsFunktion, tv, kamera, lastUtrymme, dorrar)
@@ -26,10 +25,10 @@ WEEKEND20, Procentrabatt, 0.2, (Kombi, Mellan, Stadsbil), 2024-01-01, 2024-02-01
 
 INSERT INTO erbjudande (rabattKod, rabattTyp, bilTyp, erbjudandeStart, erbjudandeSlut)
 VALUES
-('WEEKEND20', 'Totalrabatt', 'Elbilar', ), -- 1, weekendrabatt, elibilar, en helg
+('WEEKEND20', 'Totalrabatt', 'Elbilar', ), -- 1, weekendrabatt, elbilar, en helg
 (), -- 2, halloweenrabatt, automatbilar, hela halloweenveckan
 (), -- 3, julrabatt, dieselbilar, från veckan före jul till 2 januari
-(); -- 4, somarrabatt, en blandning, ?
+(); -- 4, sommarrabatt, en blandning, ?
 */
 
 -- Skapar testuthyrningsstationer

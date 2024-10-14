@@ -1,5 +1,5 @@
 -- Aktör: Uthyrningspersonal
-USE implementering;
+USE `green rental`;
 
 SELECT *
 FROM hyrbil
