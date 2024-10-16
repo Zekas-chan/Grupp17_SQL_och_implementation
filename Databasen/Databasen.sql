@@ -145,7 +145,7 @@ CREATE TABLE `Bokning` (
 CREATE TABLE `Lämning` (
   `bokningsNummer` int NOT NULL,
   `stationsNummer` int NOT NULL,
-    -- datum?
+  `aterlamningsDatum` DATE NOT NULL,
   PRIMARY KEY (`bokningsNummer`, `stationsNummer`),
   FOREIGN KEY (`stationsNummer`) REFERENCES `Uthyrningsstation`(`stationsNummer`),
   FOREIGN KEY (`bokningsNummer`) REFERENCES `Bokning`(`bokningsNummer`)
@@ -154,7 +154,7 @@ CREATE TABLE `Lämning` (
 CREATE TABLE `Hämtning` (
   `bokningsNummer` int NOT NULL,
   `stationsNummer` int NOT NULL,
-    -- datum?
+  `hamtningsDatum` DATE NOT NULL,
   PRIMARY KEY (`bokningsNummer`, `stationsNummer`),
   FOREIGN KEY (`stationsNummer`) REFERENCES `Uthyrningsstation`(`stationsNummer`),
   FOREIGN KEY (`bokningsNummer`) REFERENCES `Bokning`(`bokningsNummer`)

@@ -131,21 +131,21 @@ VALUES
 ('2024-10-16', 4, 3, 5, NULL, 1, '2024-10-16', '2024-10-23', '/kundavtal/avtal4.pdf'),
 ('2024-10-17', 5, 4, NULL, 2, NULL, '2024-10-17', '2024-10-24', '/kundavtal/avtal5.pdf');
 
-INSERT INTO `lämning` (`bokningsNummer`, `stationsNummer`)
+INSERT INTO `lämning` (bokningsNummer, stationsNummer, aterlamningsDatum)
 VALUES
-(1, 1),
-(2,1),
-(3,2),
-(4,3),
-(5,4);
+(1, 1,2024-10-20),
+(2,1, 2024-10-21),
+(3,2, 2024-10-22),
+(4,3, 2024-10-23),
+(5,4, 2024-10-24);
 
-INSERT INTO `hämtning` (`bokningsNummer`, `stationsNummer`)
+INSERT INTO `hämtning` (bokningsNummer, stationsNummer, hamtningsDatum)
 VALUES
-(1, 1),
-(2,1),
-(3,2),
-(4,3),
-(5,4);
+(1,1,2024-10-13),
+(2,1,2024-10-14),
+(3,2,2024-10-15),
+(4,3,2024-10-16),
+(5,4,2024-10-17);
 
 -- Testkontroller för bil 1
 -- PersonalID 5 är en underhållare på station 1
