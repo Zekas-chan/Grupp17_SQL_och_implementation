@@ -123,21 +123,13 @@ VALUES
 ('Stationschef', 'Karin Persson', 4);
 
 -- Skapar testbokningar
-INSERT INTO `Bokning` (`bokningsDatum`, `bilNummer`, `stationsNummer`, `kundNummer`, `foretagsKundNummer`, `kampanjID`)
+INSERT INTO `Bokning` (bokningsDatum, bilNummer, stationsNummer, foretagsKundNummer, kundNummer, kampanjID, hyrStartDatum, hyrSlutDatum, avtalsVillkorReferens)
 VALUES
-('2024-10-13', 1, 1, 5, NULL, NULL),
-('2024-10-14', 2, 1, NULL, 1, NULL),
-('2024-10-15', 3, 2, 6, NULL, NULL),
-('2024-10-16', 4, 3, 7, NULL, 1),
-('2024-10-17', 5, 4, NULL, 2, NULL);
-
-INSERT INTO `Avtal` (`startDatum`, `slutDatum`, `avtalsVillkor`, `bokningsNummer`)
-VALUES
-('2024-10-13', '2024-10-20', '/kundavtal/avtal1.pdf', 1),
-('2024-10-14', '2024-10-21', '/kundavtal/avtal2.pdf', 2),
-('2024-10-15', '2024-10-22', '/kundavtal/avtal3.pdf', 3),
-('2024-10-16', '2024-10-23', '/kundavtal/avtal4.pdf', 4),
-('2024-10-17', '2024-10-24', '/kundavtal/avtal5.pdf', 5);
+('2024-10-13', 1, 1, 5, NULL, NULL, '2024-10-13', '2024-10-20', '/kundavtal/avtal1.pdf'),
+('2024-10-14', 2, 1, NULL, 1, NULL, '2024-10-14', '2024-10-21', '/kundavtal/avtal2.pdf'),
+('2024-10-15', 3, 2, 4, NULL, NULL,'2024-10-15', '2024-10-22', '/kundavtal/avtal3.pdf'),
+('2024-10-16', 4, 3, 5, NULL, 1, '2024-10-16', '2024-10-23', '/kundavtal/avtal4.pdf'),
+('2024-10-17', 5, 4, NULL, 2, NULL, '2024-10-17', '2024-10-24', '/kundavtal/avtal5.pdf');
 
 INSERT INTO `lämning` (`bokningsNummer`, `stationsNummer`)
 VALUES
@@ -180,4 +172,4 @@ VALUES
     ('2024-03-15', 1, 5),
     ('2024-06-20', 1, 5),
     ('2024-08-05', 1, 5),
-    ('2024-10-12', 1, 5);
+    ('2024-10-02', 1, 5);

@@ -124,6 +124,9 @@ CREATE TABLE `Bokning` (
   `foretagsKundNummer` int,
   `kundNummer` int,
   `kampanjID` int,
+  `hyrStartDatum` date NOT NULL,
+  `hyrSlutDatum` date NOT NULL,
+  `avtalsVillkorReferens` varchar(100),
   PRIMARY KEY (`bokningsNummer`),
   FOREIGN KEY (`kundNummer`) REFERENCES `Privatkund`(`kundNummer`),
   FOREIGN KEY (`foretagsKundNummer`) REFERENCES `Företagskund`(`foretagsKundNummer`),
@@ -137,16 +140,6 @@ CREATE TABLE `Bokning` (
   AND NOT
   (kundnummer IS NOT NULL AND foretagsKundNummer IS NOT NULL) -- men inte båda samtidigt
   )
-);
-
-CREATE TABLE `Avtal` (
-  `avtalsNummer` int NOT NULL AUTO_INCREMENT,
-  `startDatum` date NOT NULL,
-  `slutDatum` date NOT NULL,
-  `avtalsVillkor` varchar(100),
-  `bokningsNummer` int NOT NULL,
-  PRIMARY KEY (`avtalsNummer`),
-  FOREIGN KEY (`bokningsnummer`) REFERENCES `Bokning` (`bokningsNummer`)
 );
 
 CREATE TABLE `Lämning` (
