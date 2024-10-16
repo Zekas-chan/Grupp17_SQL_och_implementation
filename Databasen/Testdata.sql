@@ -133,29 +133,29 @@ VALUES
 
 INSERT INTO `lämning` (bokningsNummer, stationsNummer, aterlamningsDatum)
 VALUES
-(1, 1,2024-10-20),
-(2,1, 2024-10-21),
-(3,2, 2024-10-22),
-(4,3, 2024-10-23),
-(5,4, 2024-10-24);
+(1, 1,'2024-10-20'),
+(2,1, '2024-10-21'),
+(3,2, '2024-10-22'),
+(4,3, '2024-10-23'),
+(5,4, '2024-10-24');
 
 INSERT INTO `hämtning` (bokningsNummer, stationsNummer, hamtningsDatum)
 VALUES
-(1,1,2024-10-13),
-(2,1,2024-10-14),
-(3,2,2024-10-15),
-(4,3,2024-10-16),
-(5,4,2024-10-17);
+(1,1,'2024-10-13'),
+(2,1,'2024-10-14'),
+(3,2,'2024-10-15'),
+(4,3,'2024-10-16'),
+(5,4,'2024-10-17');
 
 -- Testkontroller för bil 1
 -- PersonalID 5 är en underhållare på station 1
-INSERT INTO kontroll (kontrollDatum, kilometer, bilNummer, personalNummer)
+INSERT INTO kontroll (kontrollDatum, kilometerDelta, bilNummer, personalNummer)
 VALUES
-    ('2024-09-01', 12000, 1, 5),
-    ('2024-09-15', 12500, 1, 5),
-    ('2024-10-01', 13000, 1, 5),
-    ('2024-10-10', 13500, 1, 5),
-    ('2024-10-14', 14000, 1, 5);
+    ('2024-09-01', 500, 1, 5),
+    ('2024-09-15', 500, 1, 5),
+    ('2024-10-03', 501, 1, 5),
+    ('2024-10-10', 1499, 2, 5),
+    ('2024-10-14', 1550, 3, 5);
 
 -- Kanske behövs mer kolumner, kanske duger i nuvarande utformning?
 INSERT INTO företagsfaktura (foretagsKundNummer)
@@ -168,8 +168,8 @@ VALUES
 -- PersonalID 5 är en underhållare på station 1
 INSERT INTO besiktning (besiktningsDatum, bilNummer, personalNummer)
 VALUES
-    ('2024-01-10', 1, 5),
-    ('2024-03-15', 1, 5),
-    ('2024-06-20', 1, 5),
-    ('2024-08-05', 1, 5),
+    ('2014-01-10', 1, 5),
+    ('2017-03-15', 2, 5),
+    ('2018-06-20', 3, 5),
+    ('2020-08-05', 4, 5),
     ('2024-10-02', 1, 5);

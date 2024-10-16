@@ -52,7 +52,7 @@ CREATE TABLE `Personal` (
 CREATE TABLE `Kontroll` (
   `kontrollNummer` int NOT NULL AUTO_INCREMENT,
   `kontrollDatum` date,
-  `kilometer` int,
+  `kilometerDelta` int,
   `bilNummer` int NOT NULL,
   `personalNummer` int NOT NULL,
   PRIMARY KEY (`kontrollNummer`),

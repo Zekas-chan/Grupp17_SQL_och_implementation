@@ -5,24 +5,19 @@ USE `green rental`;
 -- Genomföra bokning av bil för privatkund:
     -- Sök efter bil,
     -- Antar att kunden är registrerad.
-    -- Kräver
     -- Bokningsdatum kan rimligtvis också använda CURRENT_DATE
-    INSERT INTO `Bokning` (`bokningsDatum`, `bilNummer`, `stationsNummer`, `kundNummer`)
+    INSERT INTO `Bokning` (bokningsDatum, bilNummer, stationsNummer, kundNummer, hyrStartDatum, hyrSlutDatum, avtalsVillkorReferens)
     VALUES (
-            '2024-10-31',
+            '2024-10-18',
             5,
             1,
-            (SELECT kundNummer FROM privatkund WHERE personNummer = 198707072345) -- Hitta kundnummer
+            (SELECT kundNummer FROM privatkund WHERE personNummer = 198707072345), -- Hitta kundnummer med personuppgifter
+            '2023-11-01',
+            '2023-11-30',
+            '/srvr/avtal.pdf'
            );
-    -- Ett avtal ska också finnas.
-    INSERT INTO avtal (startDatum, slutDatum, avtalsVillkor, bokningsNummer)
-    VALUES
-    ('2023-10-14', '2023-10-15', '/srvr/avtal.pdf', LAST_INSERT_ID());
     -- Testrad för att visa att ovanstående fungerar
-    SELECT *
-    FROM avtal
-        INNER JOIN bokning ON bokning.bokningsNummer = avtal.bokningsNummer
-    WHERE avtal.bokningsNummer = LAST_INSERT_ID();
+    SELECT bokningsNummer, bilNummer, bokningsDatum, hyrStartDatum, hyrSlutDatum FROM bokning;
 
 -- Söka efter alla just nu tillgängliga bilar på en specifik station:
     -- Kräver: Stationsnummer
@@ -53,8 +48,9 @@ USE `green rental`;
 -- Utlämning av bil
     -- Kund uppger personuppgifter, vilket låter oss identifiera bokningen.
     -- Avtalet skrivs på och körkort visas (sker utanför systemet, avtal innehåller referens)
-    INSERT INTO hämtning (bokningsNummer, stationsNummer)
-    VALUES (6, 1);
+    INSERT INTO hämtning (bokningsNummer, stationsNummer, hamtningsDatum)
+    VALUES (6, 1, '2023-11-01');
+
 
     -- BIlen är inte längre tillgänglig
     UPDATE hyrbil
@@ -65,9 +61,9 @@ USE `green rental`;
     SELECT * FROM hyrbil WHERE bilNummer = 5;
 
 -- Ta emot en bil som var uthyrd.
-    INSERT INTO lämning (bokningsNummer, stationsNummer)
+    INSERT INTO lämning (bokningsNummer, stationsNummer, aterlamningsDatum)
     VALUES
-    (6, 2);
+    (6,2,'2023-11-30');
     -- Om bilen lämnas på annan station än den hämtades måste dess stationstillhörighet uppdateras
     UPDATE hyrbil
     SET stationsNummer = 2
@@ -80,21 +76,7 @@ USE `green rental`;
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  !!                         ALLT NEDANFÖR ÄR OFÄRDIGT                               !!
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- */
--- Söka och applicera tillgängliga rabatter(Kom inte så långt här, oklar):
-SELECT er.*
-FROM Erbjudande er
-INNER JOIN Bilmodell bm ON er.bilModell = bm.modellNamn
-WHERE bm.drivMedel = er.rabattTyp;  -- exempelvillkor för rabatttyp
 
-
-
-
--- Hämta uppgifter om avtal(Ofärdig):
-SELECT a.*, k.*
-FROM Avtal a
-INNER JOIN Bokning b ON a.bokningsNummer = b.bokningsNummer
-INNER JOIN Privatkund k ON b.kundNummer = k.kundNummer;
 
 -- Kolla uppgifter för hämtning/lämning(dödade mig nästan så är osäker på om den är helt fungerande):
 -- Allt för att kolla hämtning/lämning :,(
@@ -118,6 +100,3 @@ INNER JOIN
     Uthyrningsstation u ON l.stationsNummer = u.stationsNummer
 WHERE
     l.stationsNummer = 1;
-
--- Hämta uppgifter om uthyrningsstationer:
-SELECT * from `uthyrningsstation`;
