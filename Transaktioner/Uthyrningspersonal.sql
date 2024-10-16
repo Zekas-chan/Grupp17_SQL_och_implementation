@@ -72,6 +72,15 @@ USE `green rental`;
     SELECT * FROM lämning WHERE bokningsNummer = 6;
     SELECT * FROM hyrbil WHERE bilNummer = 5;
     SELECT COUNT(bilNummer) FROM hyrbil WHERE stationsNummer = 1;
+
+
+-- Hämta uppgifter om vilka bilar som hämtas/lämnas den (eller andra) dagar
+    SELECT Uthyrningsstation.stationsNummer, Hyrbil.bilNummer, bokning.hyrStartDatum, bokning.hyrSlutDatum
+    FROM `Uthyrningsstation`
+    JOIN `Hämtning` ON Uthyrningsstation.stationsNummer=Hämtning.stationsNummer
+    JOIN `Bokning` ON Hämtning.bokningsNummer=Bokning.bokningsNummer
+    JOIN `Hyrbil` ON Bokning.bilNummer=Hyrbil.bilNummer
+    WHERE Uthyrningsstation.stationsNummer = 1;
 /*
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  !!                         ALLT NEDANFÖR ÄR OFÄRDIGT                               !!
