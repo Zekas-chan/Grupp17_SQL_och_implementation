@@ -7,15 +7,15 @@ VALUES
 ('Stadsbil', 'El', 'Automat', 2, FALSE, FALSE, FALSE, FALSE, 1, 2),
 ('Liten', 'Etanol', 'Manuell', 5, FALSE, FALSE, FALSE, FALSE, 1, 2),
 ('Mellan', 'El', 'Automat', 5, FALSE, TRUE, TRUE, FALSE, 2, 4),
-('Kombi', 'El',  'Automat', 7, TRUE, FALSE, FALSE, FALSE, 2, 4), -- Även backsystem (annat ord för parkeringsfunktion?). Växellåda ej angiven
-('Minibuss', 'Biogas',  'Automat', 9, FALSE, FALSE, TRUE, FALSE, 4, 4), -- Eldrivna dörrar, stort lastutrymme. Växellåda ej angiven
-('Transportbil', 'Biogas', 'Manuell', 2, FALSE, FALSE, FALSE, TRUE, 8, 2); -- Växellåda ej angiven
+('Kombi', 'El',  'Automat', 7, TRUE, FALSE, FALSE, FALSE, 2, 4), -- Även backsystem (annat ord för parkeringsfunktion?).
+('Minibuss', 'Biogas',  'Automat', 9, FALSE, FALSE, TRUE, FALSE, 4, 4), -- Eldrivna dörrar, stort lastutrymme.
+('Transportbil', 'Biogas', 'Manuell', 2, FALSE, FALSE, FALSE, TRUE, 8, 2);
 
 -- Skapar ett testerbjudande
 INSERT INTO erbjudande (rabattKod, rabattTyp, bilModell, erbjudandeStart, erbjudandeSlut)
 VALUES
-('WEEKEND20', '20%', 'Kombi', '2024-10-01', '2024-10-31' );
-
+('WEEKEND20', '20%', 'Kombi', '2024-10-01', '2024-10-31'),
+('SUPER50', '50%', 'Stadsbil', '2024-10-01', '2025-10-01');
 
 -- Skapar testuthyrningsstationer
 INSERT INTO Uthyrningsstation (address, telefonNummer, epost, oppetTider)
@@ -125,22 +125,21 @@ VALUES
 -- Skapar testbokningar
 INSERT INTO `Bokning` (`bokningsDatum`, `bilNummer`, `stationsNummer`, `kundNummer`, `foretagsKundNummer`, `kampanjID`)
 VALUES
-('2024-10-13', 11, 1, 5, NULL, NULL),
-('2024-10-14', 12, 1, NULL, 1, NULL),
-('2024-10-15', 13, 2, 6, NULL, NULL),
-('2024-10-16', 14, 3, 7, NULL, 1),
-('2024-10-16', 14, 3, 7, NULL, 1),
-('2024-10-17', 15, 4, NULL, 2, NULL);
+('2024-10-13', 1, 1, 5, NULL, NULL),
+('2024-10-14', 2, 1, NULL, 1, NULL),
+('2024-10-15', 3, 2, 6, NULL, NULL),
+('2024-10-16', 4, 3, 7, NULL, 1),
+('2024-10-17', 5, 4, NULL, 2, NULL);
 
 INSERT INTO `Avtal` (`startDatum`, `slutDatum`, `avtalsVillkor`, `bokningsNummer`)
 VALUES
-('2024-10-13', '2024-10-20', '/srvr/avtal.pdf', 1),
-('2024-10-14', '2024-10-21', '/srvr/avtal.pdf', 2),
-('2024-10-15', '2024-10-22', 'Uthyrning av bil i en vecka', 3),
-('2024-10-16', '2024-10-23', 'Uthyrning av bil i en vecka', 4),
-('2024-10-17', '2024-10-24', 'Uthyrning av bil i en vecka', 5);
+('2024-10-13', '2024-10-20', '/kundavtal/avtal1.pdf', 1),
+('2024-10-14', '2024-10-21', '/kundavtal/avtal2.pdf', 2),
+('2024-10-15', '2024-10-22', '/kundavtal/avtal3.pdf', 3),
+('2024-10-16', '2024-10-23', '/kundavtal/avtal4.pdf', 4),
+('2024-10-17', '2024-10-24', '/kundavtal/avtal5.pdf', 5);
 
-insert into `lämning` (`bokningsNummer`, `stationsNummer`)
+INSERT INTO `lämning` (`bokningsNummer`, `stationsNummer`)
 VALUES
 (1, 1),
 (2,1),
@@ -148,7 +147,7 @@ VALUES
 (4,3),
 (5,4);
 
-insert into `hämtning` (`bokningsNummer`, `stationsNummer`)
+INSERT INTO `hämtning` (`bokningsNummer`, `stationsNummer`)
 VALUES
 (1, 1),
 (2,1),

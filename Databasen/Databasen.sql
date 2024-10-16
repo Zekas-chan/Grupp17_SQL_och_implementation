@@ -129,11 +129,13 @@ CREATE TABLE `Bokning` (
   FOREIGN KEY (`foretagsKundNummer`) REFERENCES `Företagskund`(`foretagsKundNummer`),
   FOREIGN KEY (`kampanjID`) REFERENCES `Erbjudande`(`kampanjID`),
   
-  -- Ser till att antingen kundnummer ELLER företagskundnummer finns
-  CONSTRAINT must_have_a_customerID CHECK (
-  (kundnummer IS NOT NULL AND foretagsKundNummer IS NULL)
+  -- Ser till att antingen kundnummer ELLER företagskundnummer finns, men INTE BÅDA samtidigt.
+  CONSTRAINT must_have_valid_customerID CHECK (
+  (kundnummer IS NOT NULL AND foretagsKundNummer IS NULL) -- antingen kundnummer finns
   OR
-  (kundnummer IS NULL AND foretagsKundNummer IS NOT NULL)
+  (kundnummer IS NULL AND foretagsKundNummer IS NOT NULL) -- eller företagskundnummer finns
+  AND NOT
+  (kundnummer IS NOT NULL AND foretagsKundNummer IS NOT NULL) -- men inte båda samtidigt
   )
 );
 
@@ -150,6 +152,7 @@ CREATE TABLE `Avtal` (
 CREATE TABLE `Lämning` (
   `bokningsNummer` int NOT NULL,
   `stationsNummer` int NOT NULL,
+    -- datum?
   PRIMARY KEY (`bokningsNummer`, `stationsNummer`),
   FOREIGN KEY (`stationsNummer`) REFERENCES `Uthyrningsstation`(`stationsNummer`),
   FOREIGN KEY (`bokningsNummer`) REFERENCES `Bokning`(`bokningsNummer`)
@@ -158,6 +161,7 @@ CREATE TABLE `Lämning` (
 CREATE TABLE `Hämtning` (
   `bokningsNummer` int NOT NULL,
   `stationsNummer` int NOT NULL,
+    -- datum?
   PRIMARY KEY (`bokningsNummer`, `stationsNummer`),
   FOREIGN KEY (`stationsNummer`) REFERENCES `Uthyrningsstation`(`stationsNummer`),
   FOREIGN KEY (`bokningsNummer`) REFERENCES `Bokning`(`bokningsNummer`)
